@@ -15,5 +15,4 @@ defineProps({
         本文: {{ blog.content }}
         </li>
     </ul>
-    あああ
 </template>

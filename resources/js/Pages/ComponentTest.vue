@@ -12,6 +12,7 @@ const emitTest = e => console.log(e);
     <InputLabel value="件名">タイトル</InputLabel>
     <TextInput 
       modelValue="初期値が入ります"
-      @update:modelValue="emitTest"></TextInput>
+      @update:modelValue="emitTest">
+    </TextInput>
 </GuestLayout>
 </template>

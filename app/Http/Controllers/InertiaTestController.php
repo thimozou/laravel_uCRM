@@ -58,4 +58,12 @@ class InertiaTestController extends Controller
             'message' => '削除しました。'
         ]);
     }
+    
+    public function testPage()
+    {
+        // InertiaTest.vue にブログ一覧も渡しておくと良いかもしれません
+        return Inertia::render('Inertia/InertiaTest', [
+            'blogs' => InertiaTest::all() // 必要であれば
+        ]);
+    }
 }

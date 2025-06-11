@@ -10,21 +10,18 @@ use App\Http\Controllers\ItemController;
 Route::resource('/items', ItemController::class)
 ->middleware(['auth', 'verified']);
 
-Route::get('/inertia-test', function () {
-    return Inertia::render('InertiaTest');
-    }
-);
+Route::get('/inertia-test', [InertiaTestController::class, 'testPage'])->name('inertia.test');
 
 Route::get('/component-test', function () {
     return Inertia::render('ComponentTest');
     }
 );
 
-Route::get('/Inertia/index', [InertiaTestController::class, 'index'])->name('inertia.index');
-Route::get('/Inertia/create', [InertiaTestController::class, 'create'])->name('inertia.create');
-Route::post('/Inertia', [InertiaTestController::class, 'store'])->name('inertia.store');
-Route::get('/Inertia/show/{id}', [InertiaTestController::class, 'show'])->name('inertia.show');
-Route::get('/Inertia/delete', [InertiaTestController::class, 'delete'])->name('inertia.delete');
+Route::get('/inertia/index', [InertiaTestController::class, 'index'])->name('inertia.index');
+Route::get('/inertia/create', [InertiaTestController::class, 'create'])->name('inertia.create');
+Route::post('/inertia', [InertiaTestController::class, 'store'])->name('inertia.store');
+Route::get('/inertia/show/{id}', [InertiaTestController::class, 'show'])->name('inertia.show');
+Route::delete('/inertia/{id}', [InertiaTestController::class, 'delete'])->name('inertia.delete');
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
