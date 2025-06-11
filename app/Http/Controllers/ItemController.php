@@ -85,7 +85,7 @@ class ItemController extends Controller
      */
 
     public function update(UpdateItemRequest $request, Item $item)
-    { 
+    {
         // $itemがDBのデータ $requestが入力したデータ
         $item->name = $request->name;
         $item->memo = $request->memo;
