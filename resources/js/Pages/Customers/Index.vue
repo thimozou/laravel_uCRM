@@ -48,6 +48,8 @@ const searchCustomers = () => {
                                             <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">氏名</th>
                                             <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">カナ</th>
                                             <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">電話番号</th>
+                                            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">メールアドレス</th>
+                                            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">ステータス</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -58,6 +60,10 @@ const searchCustomers = () => {
                                             <td class="border-b-2 border-gray-200 px-4 py-3">{{ customer.name }}</td>
                                             <td class="border-b-2 border-gray-200 px-4 py-3">{{ customer.kana }}</td>
                                             <td class="border-b-2 border-gray-200 px-4 py-3">{{ customer.tel }}</td>
+                                            <td class="border-b-2 border-gray-200 px-4 py-3">{{ customer.email }}</td>
+                                            <td class="border-b-2 border-gray-200 px-4 py-3">
+                                                <Link as="button" :href="route('customers.show', { customer: customer.id })" class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">詳細</Link>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>

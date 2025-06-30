@@ -23,7 +23,7 @@ class CustomerController extends Controller
         // dd($getTest, $getPaginate);
 
         $customers = Customer::searchCustomers($request->search)
-        ->select('id', 'name', 'kana', 'tel')->paginate(50);
+        ->select('id', 'name', 'kana', 'tel', 'email')->paginate(50);
 
         // dd($customers);
 
@@ -77,7 +77,9 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        //
+        return Inertia::render('Customers/Show', [
+            'customer' => $customer
+        ]);
     }
 
     /**
@@ -88,7 +90,9 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
+        return Inertia::render('Customers/Edit', [
+            'customer' => $customer
+        ]);   
     }
 
     /**
@@ -100,7 +104,18 @@ class CustomerController extends Controller
      */
     public function update(UpdateCustomerRequest $request, Customer $customer)
     {
-        //
+        // $customerがDBのデータ $requestが入力したデータ
+        $customer->name = $request->name;
+        $customer->kana = $request->kana;
+        $customer->tel = $request->tel;
+        $customer->email = $request->email;
+        $customer->save();
+
+        return to_route('customers.index')
+        ->with([
+            'message' => '更新しました。',
+            'status' => 'success'
+        ]);
     }
 
     /**
